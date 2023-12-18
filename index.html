@@ -3,40 +3,111 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Acceuil</title>
+    <title>Accueil</title>
     <link rel="stylesheet" href="projet.css">
+    <style>
+        #texte-dynamique {
+            font-size: 3em;
+            color: #140805;
+            margin-bottom: 20px;
+            font-family: 'Dancing Script', cursive;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .intro {
+            font-size: 1.5em;
+            color: #FF477A;
+            margin-bottom: 40px;
+            font-family: 'Playfair Display', serif;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        img {
+            border-radius: 50%;
+            width: 250px;
+            height: 250px;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease-out;
+        }
+
+        img:hover {
+            transform: scale(1.1);
+        }
+
+        .savoir-plus {
+            margin-top: 20px;
+        }
+
+        .btn-en-savoir-plus {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            color: #fff;
+            background-color: #FF928B;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease-out;
+        }
+
+        .btn-en-savoir-plus:hover {
+            background-color: #DE9BBA;
+        }
+
+    </style>
 </head>
 
 <body>
 
     <header>
         <nav>
-            <a href="index.html"><span>Home</span></a> |
-            <a href="portfolio.html"><span>Portfolio</span></a> |
-            <a href="contact.html"><span>Contact</span></a>
+            <a href="index.html">Home</a> |
+            <a href="portfolio.html">Portfolio</a> |
+            <a href="contact.html">Contact</a>
         </nav>
     </header>
 
     <section class="content">
         <article>
-            <h1 class="greeting">Salut, je suis</h1>
-            <h2 class="nom">Ranim Jouini</h2>
-            <p class="description">Étudiante passionnée d'informatique</p>
+            <div id="texte-dynamique"></div>
 
-            <div >
-                <img src="photo.jpg" width="150" height="170" style="border-radius: 50%; width: 200px; height: 200px;">
+            <div>
+                <img src="photo.jpg" alt="Profil" />
             </div>
 
             <p class="intro">
                 Bienvenue sur mon espace numérique où je commence à tracer mon chemin dans le monde de la technologie.
             </p>
 
-            <p class="savoir plus">
-                <a href="portfolio.html">En savoir plus sur moi</a>
+            <p class="savoir-plus">
+                <a href="portfolio.html" class="btn-en-savoir-plus">Explorez mon profil</a>
             </p>
+
         </article>
     </section>
 
+    <script>
+        
+        const textes = [
+            "Je suis Jouini Ranim",
+            "Je suis une étudiante en cycle d'ingénieur",
+            "Je suis passionnée d'Informatique",
+        ];
+
+        const divTexteDynamique = document.getElementById("texte-dynamique");
+        let index = 0;
+
+        function afficherTexteSuivant() {
+            divTexteDynamique.innerHTML = textes[index];
+            index = (index + 1) % textes.length;
+        }
+
+        afficherTexteSuivant();
+
+        divTexteDynamique.style.transition = 'opacity 0.75s ease-in-out';
+
+        setInterval(afficherTexteSuivant, 1500);
+    </script>
 </body>
 
 </html>

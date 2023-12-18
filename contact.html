@@ -5,9 +5,51 @@
     <meta charset="UTF-8">
     <title>Contact</title>
     <link rel="stylesheet"  href="projet.css">
+    <script>
+        function validateForm() {
+            var nom = document.getElementById('nom').value.trim();
+            var prenom = document.getElementById('prenom').value.trim();
+            var email = document.getElementById('email').value.trim();
+            var zoneTexte = document.getElementById('zoneTexte').value.trim();
+
+            if (nom === '' || prenom === '' || email === '' || zoneTexte === '') {
+                alert('Veuillez remplir tous les champs.');
+                return false;
+            }
+
+            if (!isValidName(nom) || !isValidName(prenom)) {
+                alert('Veuillez saisir un nom et un prénom valides (lettres seulement).');
+                return false;
+            }
+
+            if (!isValidEmail(email)) {
+                alert('Veuillez saisir une adresse e-mail valide.');
+                return false;
+            }
+
+            if (zoneTexte.length < 20) {
+                alert('Veuillez saisir un message d\'au moins 20 caractères.');
+                return false;
+            }
+
+            alert('Merci pour votre message!');
+            return false;
+        }
+
+        function isValidName(value) {
+           
+            return /^[a-zA-Zéèêëçàùûüôö-]+$/.test(value);
+        }
+
+        function isValidEmail(value) {
+            
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+        }
+    </script>
 </head>
 
 <body>
+    
     <header>
         <nav>
             <a href="index.html"><span>Home</span></a> |
@@ -17,41 +59,46 @@
     </header>
     <section class="content contact">
         <div class="contact-container">
-            <h1 class="title"><span>Contactez-moi</span></h1>
+    <form onsubmit="return validateForm()">
+       
 
-            <form>
-                <div class="input-group">
-                    <label for="nom">Nom </label>
-                    <input required type="text" id="nom">
-                </div>
-
-                <div class="input-group">
-                    <label for="prenom">Prénom</label>
-                    <input type="text" id="prenom">
-                </div>
-
-                <div class="input-group">
-                    <label for="email">E-mail </label>
-                    <input type="email" id="email">
-                </div>
-
-                <div class="input-group">
-                    <label for="zoneTexte">Votre message:</label>
-                    <textarea id="zoneTexte" name="zoneTexte" rows="10" cols="60"></textarea>
-                </div>
-
-                <button type="submit">Envoyer</button>
-            </form>
-
-            <div class="contact-info">
-                <address>
-                    <p>📍 Adresse : Ariana, Tunisie</p>
-                    <p>📧 Email : <a href="mailto:jouini.ranim@esprit.tn"><span>jouini.ranim@esprit.tn</span></a></p>
-                    <p>📘 Facebook <a href="https://www.facebook.com/ranim.jouini.399?mibextid=ZbWKwL" target="_blank"> Facebook</a></p>
-            </div>
+        <div class="input-group">
+            <label for="nom">Nom </label>
+            <input required type="text" id="nom">
         </div>
-    </section>
+
+        <div class="input-group">
+            <label for="prenom">Prénom</label>
+            <input type="text" id="prenom">
+        </div>
+
+        <div class="input-group">
+            <label for="email">E-mail </label>
+            <input type="email" id="email">
+        </div>
+
+        <div class="input-group">
+            <label for="zoneTexte">Votre message:</label>
+            <textarea id="zoneTexte" name="zoneTexte" rows="10" cols="60"></textarea>
+        </div>
+
+        <button type="submit">Envoyer</button>
+    </form>
+
+    <div class="contact-info">
+        <address>
+            <p>📍 Adresse : Ariana, Tunisie</p>
+            <p>📧 Email : <a href="mailto:jouini.ranim@esprit.tn"><span>jouini.ranim@esprit.tn</span></a></p>
+            <p>📘 Facebook <a href="https://www.facebook.com/ranim.jouini.399?mibextid=ZbWKwL" target="_blank"> Facebook</a></p>
+        </address>
+    </div>
 
 </body>
 
 </html>
+
+
+
+
+
+
